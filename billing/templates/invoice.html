@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Page - Invoice</h1>
+        <div>
+            <p>Customer Email: {{ customer_email }}</p>
+        </div>
+        <div class="billing-section">
+            <h3>Bill Section</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Purchase Price</th>
+                        <th>Tax % for item</th>
+                        <th>Tax payable for item</th>
+                        <th>Total price of the item</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.product_id }}</td>
+                        <td>{{ product.unit_price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.purchase_price }}</td>
+                        <td>{{ product.tax_percentage }}</td>
+                        <td>{{ product.tax_amount }}</td>
+                        <td>{{ product.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p>Total price without tax: {{ total_price_without_tax }}</p>
+            <p>Total tax payable: {{ total_tax }}</p>
+            <p>Net price of the purchased items: {{ net_price }}</p>
+            <p>Balance payable to the customer: {{ balance }}</p>
+        </div>
+        <div class="denomination-section">
+            <h3>Balance Denomination:</h3>
+            <ul>
+                {% for denom, count in balance_denominations.items %}
+                <li>{{ denom }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

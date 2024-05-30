@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <title>Purchase Detail</title>
+    </head>
+    <body>
+      <h1>Purchase Detail</h1>
+      <p>Customer Email: {{ purchase.customer_email }}</p>
+      <p>Total Amount: {{ purchase.total_amount }}</p>
+      <p>Paid Amount: {{ purchase.paid_amount }}</p>
+      <ul>
+        {% for item in items %}
+          <li>Product: {{ item.product.name }} - Quantity: {{ item.quantity }} - Total Price: {{ item.total_price }}</li>
+        {% endfor %}
+      </ul>
+    </body>
+    </html>

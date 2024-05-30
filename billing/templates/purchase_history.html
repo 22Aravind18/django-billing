@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <title>Purchase History</title>
+    </head>
+    <body>
+      <h1>Purchase History</h1>
+      <ul>
+        {% for purchase in purchases %}
+          <li><a href="{% url 'purchase_detail' purchase.id %}">Purchase ID: {{ purchase.id }} - Total Amount: {{ purchase.total_amount }}</a></li>
+        {% endfor %}
+      </ul>
+    </body>
+    </html>

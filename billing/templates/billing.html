@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .billing-section, .denomination-section {
+            margin: 20px 0;
+        }
+        form div, .formset div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+        }
+        .btn-group {
+            margin-top: 20px;
+        }
+        .btn-group button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Page</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label>Customer Email:</label>
+                {{ form.customer_email }}
+            </div>
+            <div class="billing-section">
+                <h3>Bill Section</h3>
+                <div class="formset">
+                    {{ formset.management_form }} <!-- Include management form data -->
+                    {% for product_form in formset %}
+                    <div class="form-row">
+                        {{ product_form.product.label_tag }} {{ product_form.product }}
+                        {{ product_form.quantity.label_tag }} {{ product_form.quantity }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" id="add-row">Add New</button>
+            </div>
+            <div class="denomination-section">
+                <h3>Denominations</h3>
+                {% for denom in denominations %}
+                <div>
+                    <label>{{ denom }}:</label>
+                    <input type="number" name="denomination_{{ denom }}" placeholder="Count">
+                </div>
+                {% endfor %}
+            </div>
+            <div>
+                <label>Cash Paid by Customer:</label>
+                {{ form.paid_amount }}
+            </div>
+            <div class="btn-group">
+                <button type="reset">Cancel</button>
+                <button type="submit">Generate Bill</button>
+            </div>
+        </form>
+
+        {% if form.errors or formset.non_form_errors %}
+        <div style="color: red;">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in formset.non_form_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('add-row').addEventListener('click', function() {
+            var formsetDiv = document.querySelector('.formset');
+            var totalFormsInput = document.getElementById('id_form-TOTAL_FORMS');
+            var currentFormCount = parseInt(totalFormsInput.value, 10);
+            totalFormsInput.value = currentFormCount + 1; // Increment the total forms counter
+
+            var newForm = formsetDiv.querySelector('.form-row').cloneNode(true);
+            var newFormHtml = newForm.innerHTML.replace(/form-\d+/g, 'form-' + currentFormCount); // Update form indices
+            newForm.innerHTML = newFormHtml;
+
+            // Reset values in the cloned form
+            newForm.querySelector('select').value = '';
+            newForm.querySelector('input').value = '';
+
+            formsetDiv.appendChild(newForm);
+        });
+    </script>
+</body>
+</html>
