@@ -1,10 +1,5 @@
 """
-WSGI config for billing_system project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
+Configuration for WSGI, which is the specification for handling web server requests.
 """
 
 import os
