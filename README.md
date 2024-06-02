@@ -23,15 +23,7 @@
    pip install -r requirements.txt
    ```
 
-4. **Change Directory**
-
-   Change the directory to the Django project directory:
-   
-   ```bash
-   cd django-billing/mallow/billing_system
-   ```
-
-5. **Run the Server**
+4. **Run the Server**
 
    Run the server by executing the following command:
    
