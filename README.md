@@ -32,7 +32,7 @@
    ```
 
 5. **Create django secret key**
-6. 
+   
    To run and access the billing page, create a secret using the command:
    
    ```bash
@@ -42,7 +42,7 @@
    Create a secret variable named "SECRET_KEY" and append the randomly generated secret string with the prefix "django-insecure-" in settings.py file
    
 
-7. **Run the Server**
+6. **Run the Server**
 
    Run the server by executing the following command:
    
