@@ -49,3 +49,9 @@
    ```bash
    python manage.py runserver
    ```
+
+7. **Create superuser for accessing admin panel**
+
+   ```bash
+   python manage.py createsuperuser
+   ```
