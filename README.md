@@ -5,15 +5,14 @@
 1. **Clone the Repo**
 
    ```bash
-   git clone <your-repo-url>
+   git clone repo-url
    ```
 
 2. **Create and Activate a Virtual Environment**
 
    ```bash
    python -m venv my_venv
-   .\my_venv\Scripts\activate   # On Windows
-   # source my_venv/bin/activate  # On Unix or MacOS
+   .\my_venv\Scripts\activate
    ```
 
 3. **Install Dependencies**
