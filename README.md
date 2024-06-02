@@ -39,9 +39,9 @@
    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
    ```
    
-   Create a secret variable named "SECRET_KEY" and append the randomly generated secret string with the prefix "django-insecure-" in settings.py file
+   Create a secret variable named "SECRET_KEY" and append the randomly generated secret string with the prefix "django-insecure-" in billing_system/settings.py file
    
-
+   
 6. **Run the Server**
 
    Run the server by executing the following command:
