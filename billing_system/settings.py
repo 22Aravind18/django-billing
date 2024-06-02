@@ -8,7 +8,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-!u+uv-2@xta99ao^0%g9&kg$95ydhb5f71m0(1(q283f3j=nfa'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.your-email-provider.com' # Replace with your email provider's SMTP server
 EMAIL_PORT = 587
