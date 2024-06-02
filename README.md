@@ -20,7 +20,7 @@
    Change the directory to the Django project directory:
    
    ```bash
-   cd django-billing/mallow/billing_system
+   cd django-billing
    ```
 
 4. **Install Dependencies**
